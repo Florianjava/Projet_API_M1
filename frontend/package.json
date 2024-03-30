@@ -1,0 +1,15 @@
+{
+  "name": "frontend-starter",
+  "version": "1.0.0",
+  "description": "Starter template to serve a simple frontend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "light-server -s ./src -p 9090 -x http://localhost:3000 --proxypath \"/api\" -w \"src/**/*.js, src/**/*.html\" -w \"src/**/*.css\""
+  },
+  "author": "Thomas Paillot",
+  "license": "MIT",
+  "devDependencies": {
+    "light-server": "^2.9.1"
+  }
+}
