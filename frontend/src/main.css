@@ -5,18 +5,22 @@ body {
   font-family: 'PT Sans', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', 'Noto Sans', 'Liberation Sans', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   background-color: white;
   color: #1D211C;
+  background-color: #f0f0f0;
 }
 
 .header {
-  background-image: url('../images/presse.jpg');
   background-size: cover;
   color: black;
   text-align: center;
   padding: 150px 0; 
+  background-image: url('presse.jpg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
 }
 .header h1 {
   font-family: 'Times New Roman', Times, serif;
-  font-size: 70px; 
+  font-size: 80px; 
   font-weight: bold; 
   letter-spacing: 2px; 
 }
@@ -32,11 +36,32 @@ body {
   padding-bottom: 10px;
 }
 
-#map {
-  width: 400px;
-  height: 400px;
+.scrolling-wrapper{
+	overflow-x: auto;
 }
 
 h2 {
   font-family: 'Times New Roman', Times, serif;
 }
+u{
+  font-weight: bold;
+  font-style: italic;
+}
+p{
+  font-size: 20px;
+  font-weight: 600;
+}
+
+img {
+  width: 50px; /* Largeur fixe de l'image */
+  height: 50px; /* Hauteur fixe de l'image */
+}
+
+footer {
+  background-color: #f0f0f0;
+  padding: 20px 0;
+  position: relative;
+  margin-top: 300px;
+  width: 100%;
+}
+
