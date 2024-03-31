@@ -6,7 +6,7 @@ const fetchNewsInfos = async (countryCode) => {
 
 // Function to fetch country information 
 const fetchCountryInfos = async (countryCode) => {
-    const response = await fetch(`/api/info?codes${countryCode}`);
+    const response = await fetch(`/api/info?codes=${countryCode}`);
     return response.json();
 };
 
@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     const countryInput = document.getElementById('country-select');
     const listeNewsPanel = document.getElementById('list-news');
     const countryInfosTxtPanel = document.getElementById('infos-txt');
-    const countryInfosMapPanel = document.getElementById('map');
 
    /* const submitButton = document.getElementById('submit-btn');
     const amountInput = document.getElementById('amount');  */
@@ -46,39 +45,36 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     };
 
-/*
+
     const updateInfos = async () => {
         const countryCode = countryInput.value;
         const countryInfo = await fetchCountryInfos(countryCode);
 
-        countryInfosTxtPanel.innerHTML = ''; // Clear previous content from the projects panel
+        countryInfosTxtPanel.innerHTML = ''; 
 
-        // Display principal country information
         const infosTitle = document.createElement('h2');
-        projectTitle.textContent = 'Informations :';
+        infosTitle.textContent = 'Informations générales :';
 
         const countryDescription = document.createElement('p');
         countryDescription.innerHTML = `<ul>
-            <li>Nom du pays : ${countryInfo.name.common}<li>
-            <li>Capitale : ${countryInfo.capital}<li>
-            <li>Région: ${countryInfo.region}<li>
-            <li>Superficie : ${countryInfo.area}<li>
-            <li>Population : ${countryInfo.population}<li>
-            <li>Monnaie : ${countryInfo.currencies.GBP.name} (${countryInfo.currencies.GBP.symbol}<li>
+            <li>Capitale : ${countryInfo.capital[0]}</li>
+            <li>Superficie : ${countryInfo.area}</li>
+            <li>Population : ${countryInfo.population}</li>
+            <li>Monnaie : ${countryInfo.currencies.EUR.name} (${countryInfo.currencies.EUR.symbol}</li>
         </ul>`;
+
+        countryDescription.innerHTML+=`<img src='${countryInfo.flag}' style='width: 270px; height:140px'>`
 
         countryInfosTxtPanel.appendChild(infosTitle);
         countryInfosTxtPanel.appendChild(countryDescription);
 
-        countryInfosMapPanel.setView(countryInfo.latlng)
 
     };
-    */
 
     // Event listener pour surveiller changement de pays sélectionné
     
     countryInput.addEventListener('change', async () => {
         await updateNewsList();
-       // await updateInfos();
+        await updateInfos();
     });
 });
