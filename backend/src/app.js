@@ -14,6 +14,6 @@ app.get('/', async (req, res) => {
 });
 
 // pourquoi /news marche pas
-app.use('/', newsRoute);
+app.use('/api', newsRoute);
   
 export default app;

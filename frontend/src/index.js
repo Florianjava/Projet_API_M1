@@ -1,6 +1,6 @@
 // Function to fetch country information based on country name
 const fetchNewsInfos = async (countryCode) => {
-    const response = await fetch(`/news?country=${countryCode}`);
+    const response = await fetch(`/api/news?country=${countryCode}`);
     return response.json();
 };
 
