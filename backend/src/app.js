@@ -1,6 +1,8 @@
 import express from 'express';
 import logger from 'pino-http';
 import newsRoute from './routes/api_news.js';
+import infoRoute from './routes/api_info.js';
+
 
 const app = express();
 
@@ -13,7 +15,7 @@ app.get('/', async (req, res) => {
     res.send('hellow');
 });
 
-// pourquoi /news marche pas
 app.use('/api', newsRoute);
+app.use('/api', infoRoute);
   
 export default app;

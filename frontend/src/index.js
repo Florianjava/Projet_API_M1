@@ -1,12 +1,12 @@
-// Function to fetch country information based on country name
+// Function to fetch country top news
 const fetchNewsInfos = async (countryCode) => {
     const response = await fetch(`/api/news?country=${countryCode}`);
     return response.json();
 };
 
-// Function to fetch currency conversion rates
+// Function to fetch country information 
 const fetchCountryInfos = async (countryCode) => {
-    const response = await fetch(`/alpha/${countryCode}`);
+    const response = await fetch(`/api/info?codes${countryCode}`);
     return response.json();
 };
 
