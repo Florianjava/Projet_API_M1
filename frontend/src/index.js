@@ -55,12 +55,14 @@ document.addEventListener('DOMContentLoaded', async () => {
         const infosTitle = document.createElement('h2');
         infosTitle.textContent = 'Informations générales :';
 
+        const currencyCode = Object.keys(countryInfo.currencies)[0]
+
         const countryDescription = document.createElement('p');
         countryDescription.innerHTML = `<ul>
             <li>Capitale : ${countryInfo.capital[0]}</li>
             <li>Superficie : ${countryInfo.area}</li>
             <li>Population : ${countryInfo.population}</li>
-            <li>Monnaie : ${countryInfo.currencies.EUR.name} (${countryInfo.currencies.EUR.symbol}</li>
+            <li>Monnaie : ${countryInfo.currencies[currencyCode].name} (${countryInfo.currencies[currencyCode].symbol})</li>
         </ul>`;
 
         countryDescription.innerHTML+=`<img src='${countryInfo.flag}' style='width: 270px; height:140px'>`

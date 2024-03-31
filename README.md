@@ -1,7 +1,7 @@
 # News tracker : the tool for consulting newspaper around the world
 This web application is part of our 1st year of Master 1 MIASHS in the connected data integration module.
 It provides an interface that allows the user to select a country and access all the latest newspapers published. The user is also provided with complementary informations about the country.
-Few informations about us are provided in the footer links, you can also access to a API documentation granted by Swagger (more details below).
+Few informations about us are provided in the footer links, you can also access to an API documentation granted by Swagger (more details below).
 
 ## More about the data :
 - The datas about News consists mainly of :
