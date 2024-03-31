@@ -22,50 +22,31 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Update the projects panel
     const updateNewsList = async () => {
         const countryCode = countryInput.value;
-        const countryInfo = await fetchNewsInfos(countryCode);
+        const newsInfos = await fetchNewsInfos(countryCode);
 
         listeNewsPanel.innerHTML = ''; // Clear previous content from the projects panel
 
         // Display principal country information
         const projectTitle = document.createElement('h2');
-        projectTitle.textContent = 'Country Information';
+        projectTitle.textContent = 'Dernières News concernant le pays :';
 
-        const projectDescription = document.createElement('p');
-        projectDescription.innerHTML = `
-            <strong>Common Name:</strong> ${countryInfo.common_name}<br>
-            <strong>Official Name:</strong> ${countryInfo.official_name}<br>
-            <strong>Language:</strong> ${countryInfo.language}<br>
-            <strong>Region:</strong> ${countryInfo.region}<br>
-            <strong>Capital:</strong> ${countryInfo.capital}<br>
-            <strong>Latitude:</strong> ${countryInfo.latlng[0]}<br>
-            <strong>Longitude:</strong> ${countryInfo.latlng[1]}<br>
-        `;
+        let texteGlobal = "<div class='col-lg-12'>";
+        for(var i=0; i<newsInfos.articles.length; i++){
+            if(i % 4 == 0 && i != 0){
+                texteGlobal += "</div><div class='col-lg-12'>"
+            }
+            texteGlobal += `<div class='row'>
+                                <p> <u> ${newsInfos.articles[i].author} </u> a publié à ${newsInfos.articles[i].publishedAt} : </br>
+                                ${newsInfos.articles[i].title}, <a href='${newsInfos.articles[i].url}'>(Voir le détail) </a></p></div><br><br>`
+        }
+        texteGlobal += "</div>"
 
-        projectPanelElement.appendChild(projectTitle);
-        projectPanelElement.appendChild(projectDescription);
+        listeNewsPanel.appendChild(projectTitle);
+        listeNewsPanel.innerHTML = texteGlobal
 
-        // Display the currency from countryInfo along with its rate
-        const Rate = currencyInfo.rates[countryInfo.currency];
-
-        const ratesTitle = document.createElement('h2');
-        ratesTitle.textContent = 'Exchange Rate';
-
-        const ratesDescription = document.createElement('p');
-        ratesDescription.innerHTML = `
-            <strong>Currency:</strong> ${countryInfo.currency}<br>
-            <strong>Rate:</strong> ${Rate}<br>
-        `;
-
-        projectPanelElement.appendChild(ratesTitle);
-        projectPanelElement.appendChild(ratesDescription);
-
-        // Update conversion result
-        const amount = amountInput.value;
-        const convertedAmount = amount * Rate;
-        updateConversionResult(convertedAmount.toFixed(2));
     };
 
-
+/*
     const updateInfos = async () => {
         const countryCode = countryInput.value;
         const countryInfo = await fetchCountryInfos(countryCode);
@@ -92,11 +73,12 @@ document.addEventListener('DOMContentLoaded', async () => {
         countryInfosMapPanel.setView(countryInfo.latlng)
 
     };
+    */
 
     // Event listener pour surveiller changement de pays sélectionné
     
     countryInput.addEventListener('change', async () => {
         await updateNewsList();
-        await updateInfos();
+       // await updateInfos();
     });
 });
