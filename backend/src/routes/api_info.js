@@ -1,3 +1,55 @@
+/**
+ * @swagger
+ * /api/info:
+ *   get:
+ *     summary: Get information about a country
+ *     parameters:
+ *       - in: query
+ *         name: codes
+ *         description: ISO 3166-1 alpha-2 or alpha-3 country code
+ *         required: false
+ *         schema:
+ *           type: string
+ *     responses:
+ *       '200':
+ *         description: Successful response
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 population:
+ *                   type: integer
+ *                   description: Population of the country
+ *                 flag:
+ *                   type: string
+ *                   format: uri
+ *                   description: URL to the flag of the country
+ *                 currencies:
+ *                   type: object
+ *                   description: Information about currencies used in the country
+ *                 capital:
+ *                   type: string
+ *                   description: Capital city of the country
+ *                 languages:
+ *                   type: object
+ *                   description: Information about languages spoken in the country
+ *                 area:
+ *                   type: number
+ *                   description: Total area of the country in square kilometers
+ *       '500':
+ *         description: Error response
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   description: Error message when failed to fetch country information
+ */
+
+
 import { Router } from 'express';
 
 const router = Router();
