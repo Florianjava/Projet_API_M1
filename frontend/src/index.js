@@ -15,17 +15,14 @@ document.addEventListener('DOMContentLoaded', async () => {
     const listeNewsPanel = document.getElementById('list-news');
     const countryInfosTxtPanel = document.getElementById('infos-txt');
 
-   /* const submitButton = document.getElementById('submit-btn');
-    const amountInput = document.getElementById('amount');  */
-
-    // Update the projects panel
+    // Update the News panel
     const updateNewsList = async () => {
         const countryCode = countryInput.value;
         const newsInfos = await fetchNewsInfos(countryCode);
 
         listeNewsPanel.innerHTML = ''; // Clear previous content from the projects panel
 
-        // Display principal country information
+        // Display list of news 
         const projectTitle = document.createElement('h2');
         projectTitle.textContent = 'Dernières News concernant le pays :';
 
@@ -45,7 +42,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     };
 
-
+    // Update informations about the country
     const updateInfos = async () => {
         const countryCode = countryInput.value;
         const countryInfo = await fetchCountryInfos(countryCode);
@@ -55,7 +52,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const infosTitle = document.createElement('h2');
         infosTitle.textContent = 'Informations générales :';
 
-        const currencyCode = Object.keys(countryInfo.currencies)[0]
+        const currencyCode = Object.keys(countryInfo.currencies)[0]   // Needed to get the type of currencies
 
         const countryDescription = document.createElement('p');
         countryDescription.innerHTML = `<ul>
@@ -73,7 +70,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     };
 
-    // Event listener pour surveiller changement de pays sélectionné
+    // Event listener to look for a change of selected Country
     
     countryInput.addEventListener('change', async () => {
         await updateNewsList();
