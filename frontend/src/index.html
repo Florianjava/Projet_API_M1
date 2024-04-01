@@ -11,19 +11,12 @@
 </head>
 <body>
 
- 
- 
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col">
-        <div class="header">
-          <h1>News Tracker</h1>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="container" id="selection-pays">
-    <p>Sélectionner le pays dont consulter les derniers articles</p>
+<div class="header">
+  <h1>News Tracker</h1>
+</div>
+
+  <div id="selection-pays">
+    <p>Sélectionner le pays pour consulter les derniers articles</p>
       <select id="country-select">
         <option value="" disabled selected>Choisir un pays</option>
         <option value="fr">France</option>
@@ -37,50 +30,28 @@
       </select>
   </div>
 
-  <div class="container-fluid" style="max-width: 90%">
-    <div class="row">
-        <div class="col-lg-8">   <!---    On va mettre dans cette div les infos de new-->
-          <div class="container-fluid">
-            <div class="scrolling-wrapper row flex-row flex-nowrap mt-4 pb-4 pt-2" id="list-news">
+<div class="content">
+<div id="list-news"></div>
+<div id="infos-txt"></div>
+</div>
 
-            </div>
-        </div>
+
+<footer>
+    <div class="footer-content">
+      <div class="logo">
+        <img src="./logo-miashs.png" alt="Logo">
       </div>
-      <div class="col-lg-4" id="info-pays"> <!-- Dans celle ci les infos sur le pays-->
-        <div class="container-fluid" id="infos-txt">
-
-        </div>
-        
+        <div class="links">
+          <a href="https://ufr6.www.univ-montp3.fr/fr/formation/masters/master_miashs">Notre formation</a>
+          <a href="./bibliographie.html">Bibliographie</a>
+          <a href="./contacts.html">Contact</a>
       </div>
-    </div>
-  </div>
-
-
-
-  
-  <footer>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-4 d-flex justify-content-center align-items-center">
-                <a href="https://ufr6.www.univ-montp3.fr/fr/formation/masters/master_miashs">Notre formation</a>
-            </div>
-            <div class="col-lg-4 d-flex justify-content-center align-items-center">
-                <a href="./bibliographie.html">Bibliographie</a>
-            </div>
-            <div class="col-lg-4 d-flex justify-content-center align-items-center">
-                <a href="./contacts.html">Contact</a>
-            </div>
-        </div>
-        <div class="row"> 
-            <div class="col-lg-6 d-flex justify-content-center align-items-center">
-                <img src="./logo-miashs.png" alt="Logo">
-            </div>
-            <div class="col-lg-6 d-flex justify-content-center align-items-center">
-                <img src="./logo_pv.png" alt="Logo">
-            </div>
-        </div>
-    </div>
+      <div class="logo">
+        <img src="./logo_pv.png" alt="Logo">
+          </div>
+      </div>
 </footer>
+
 
 </body>
 </html>
