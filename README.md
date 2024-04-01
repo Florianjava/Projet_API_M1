@@ -65,6 +65,15 @@ npm install swagger-ui-express swagger-jsdoc --save
 If you launched the server as indicated in previous section you can go the the following URL : [Documentation Swagger](http://localhost:3000/api-docs) 
 
 ## Configure APIKEY
+
+### Create an API Key 
+To get an API Key that allow you to use the app you only have few steps to follow :
+- Go to [News API Website](https://newsapi.org/register)
+- Create an account
+- Copy the API key
+
+### Save the key in a proper file
+
 Here is a simple requirement to access the datas provided by the API : you have to create a .env file containing your API key with the format : *"APIKEY=your_api_key"*. Some command you may want to run to proceed so :
 ```bash
 cd backend
