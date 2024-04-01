@@ -19,7 +19,6 @@ const swaggerOptions = {
       openapi: '3.1.0',
       info: {
         title: 'API for news and informations by countries',
-        version: '2.0',
         description: "With this API, you can select a country to retrieve the latest news and obtain some information about the selected country."
       },
       servers: [
@@ -37,11 +36,17 @@ const swaggerDocs = swaggerJSDoc(swaggerOptions);
 // Serve Swagger UI
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
+
+// Define a route handler for GET requests to the root URL
 app.get('/', async (req, res) => {
-    res.send('hellow');
+  res.send('hello'); // Send a simple response
 });
 
+// Mount the newsRoute router under the '/api' path
 app.use('/api', newsRoute);
+
+// Mount the infoRoute router under the '/api' path
 app.use('/api', infoRoute);
+
   
 export default app;

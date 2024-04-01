@@ -66,32 +66,42 @@
 
  */
 
-
-
 import { Router } from 'express';
 import dotenv from 'dotenv';
+
+// Load environment variables from .env file
 dotenv.config();
 
+// Create a new router instance
 const router = Router();
 
+// Define a route handler for GET requests to '/news'
 router.get('/news', (req, res) => {
-    const country = req.query.country || 'fr'; // Obtenir le paramètre de pays de l'URL, défaut à 'fr' s'il n'est pas fourni
-    const apiKey = process.env.APIKEYNEWS;
+    // Extract the country parameter from the URL, defaulting to 'fr' if not provided
+    const country = req.query.country || 'fr';
+    // Retrieve the API key from environment variables
+    const apiKey = process.env.APIKEYNEWS1;
+    // Construct the API URL using the country and API key
     const apiUrl = `https://newsapi.org/v2/top-headlines?country=${country}&apiKey=${apiKey}`;
 
+    // Fetch news data from the News API
     fetch(apiUrl)
         .then(response => {
+            // Check if the response is OK
             if (!response.ok) {
+                // Throw an error if the response is not OK
                 throw new Error('Failed to fetch news');
             }
+            // Return the JSON response
             return response.json();
         })
         .then(data => {
-            // Vérifier si des articles sont renvoyés
+            // Check if articles are returned
             if (!data.articles || data.articles.length === 0) {
+                // Throw an error if no articles are returned
                 throw new Error('Invalid country code');
             }
-            
+            // Map the articles data to a more concise format
             const articlesData = data.articles.map(article => ({
                 author: article.author,
                 title: article.title,
@@ -101,19 +111,22 @@ router.get('/news', (req, res) => {
                 content: article.content,
                 sourceName: article.source.name
             }));
-        
+            // Send a JSON response with the articles data
             res.json({
                 articles: articlesData
             });
         })
         .catch(error => {
+            // Log any errors that occur during the process
             console.error('Error:', error);
+            // Check the error message and send an appropriate response
             if (error.message === 'Invalid country code') {
-                res.status(400).json({ error: 'Invalid country code' }); // Catch the code error
+                res.status(400).json({ error: 'Invalid country code' }); // Send a 400 status with error message
             } else {
-                res.status(500).json({ error: 'Failed to fetch news' }); 
+                res.status(500).json({ error: 'Failed to fetch news' }); // Send a 500 status with error message
             }
         });
 });
 
+// Export the router
 export default router;
