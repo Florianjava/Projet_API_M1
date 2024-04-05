@@ -28,12 +28,13 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         let texteGlobal = "<div class='col-lg-12'>";
         for(var i=0; i<newsInfos.articles.length; i++){
-            if(i % 4 == 0 && i != 0){
-                texteGlobal += "</div><div class='col-lg-12'>"
+            var date = new Date(newsInfos.articles[i].publishedAt);
+            if (i % 4 == 0 && i != 0) {
+                texteGlobal += "</div><div class='col-lg-12'>";
             }
             texteGlobal += `<div class='row'>
-                                <p> <u> ${newsInfos.articles[i].author} </u> a publié à ${newsInfos.articles[i].publishedAt} : </br>
-                                ${newsInfos.articles[i].title}, <a href='${newsInfos.articles[i].url}'>(Voir le détail) </a></p></div><br><br>`
+                                <p> <u>${newsInfos.articles[i].author}</u> a publié hier, à ${date.getHours()}:${date.getMinutes()}: <br>
+                                ${newsInfos.articles[i].title}, <a href='${newsInfos.articles[i].url}'>Voir le détail</a></p></div><br><br>`;
         }
         texteGlobal += "</div>"
 
